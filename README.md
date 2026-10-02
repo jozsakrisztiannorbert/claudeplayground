@@ -7,7 +7,7 @@ static site per client.
 |---|---|
 | `CLAUDE.md` | How the agency works and its non-negotiable design rules |
 | `.claude/agents/` | `atelier-researcher`, `atelier-director`, `atelier-builder`, `atelier-qa` |
-| `.claude/skills/` | taste-skill, image-to-code, redesign, web-design-guidelines, playwright-cli, design-md-library |
+| `.claude/skills/` | taste-skill, image-to-code, redesign, web-design-guidelines, playwright-cli, design-md-library, brag, brag-slim |
 | `atelier/` | Pipeline description, client briefs, research notes |
 | `projects/roland-frunza/` | Website design for videographer Roland Frunza |
 

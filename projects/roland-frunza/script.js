@@ -183,4 +183,113 @@
       });
     });
   }
+
+  // Ident: play once per browser session; clicking the logo at the top of the page replays it.
+  var ident = document.getElementById("ident");
+  var brand = document.getElementById("brand");
+  var identSeen = false;
+  try { identSeen = sessionStorage.getItem("rf-ident") === "1"; sessionStorage.setItem("rf-ident", "1"); } catch (e) { /* storage unavailable */ }
+  if (identSeen) root.classList.add("ident-skip");
+  if (ident && brand) {
+    brand.addEventListener("click", function (event) {
+      if (window.scrollY > 10 || root.getAttribute("data-motion") === "off") return;
+      event.preventDefault();
+      root.classList.remove("ident-skip");
+      var fresh = ident.cloneNode(true);
+      ident.parentNode.replaceChild(fresh, ident);
+      ident = fresh;
+    });
+  }
+
+  // Hero key light follows the pointer (pointer events only, no scroll listeners).
+  var hero = document.querySelector(".hero");
+  if (hero && window.matchMedia && window.matchMedia("(hover: hover)").matches) {
+    var keyFrame = null;
+    hero.addEventListener("pointermove", function (event) {
+      if (keyFrame) return;
+      keyFrame = window.requestAnimationFrame(function () {
+        var rect = hero.getBoundingClientRect();
+        hero.style.setProperty("--kx", ((event.clientX - rect.left) / rect.width * 100).toFixed(1) + "%");
+        hero.style.setProperty("--ky", ((event.clientY - rect.top) / rect.height * 100).toFixed(1) + "%");
+        keyFrame = null;
+      });
+    });
+  }
+
+  // Grade comparison: the range input drives the split, by drag, click, touch or keyboard.
+  var compare = document.getElementById("compare");
+  var compareRange = document.getElementById("compare-range");
+  if (compare && compareRange) {
+    var setSplit = function () { compare.style.setProperty("--split", compareRange.value + "%"); };
+    compareRange.addEventListener("input", setSplit);
+    setSplit();
+  }
+
+  // Film player: frames open an in-page viewer with previous and next; the Instagram link stays available.
+  var player = document.getElementById("player");
+  var frameLinks = Array.prototype.slice.call(document.querySelectorAll(".frame[data-film]"));
+  if (player && typeof player.showModal === "function" && frameLinks.length) {
+    var pImg = document.getElementById("player-img");
+    var pTitle = document.getElementById("player-title");
+    var pKind = document.getElementById("player-kind");
+    var pLength = document.getElementById("player-length");
+    var pLink = document.getElementById("player-link");
+    var current = 0;
+    var opener = null;
+    var show = function (index) {
+      current = (index + frameLinks.length) % frameLinks.length;
+      var link = frameLinks[current];
+      var img = link.querySelector("img");
+      pImg.src = img.currentSrc || img.src;
+      pImg.alt = img.alt;
+      pTitle.textContent = link.getAttribute("data-title");
+      pKind.textContent = link.getAttribute("data-kind");
+      pLength.textContent = link.getAttribute("data-length");
+      pLink.href = link.href;
+    };
+    frameLinks.forEach(function (link, index) {
+      link.addEventListener("click", function (event) {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault();
+        opener = link;
+        show(index);
+        document.body.classList.add("has-dialog");
+        player.showModal();
+        document.getElementById("player-close").focus();
+      });
+    });
+    document.getElementById("player-prev").addEventListener("click", function () { show(current - 1); });
+    document.getElementById("player-next").addEventListener("click", function () { show(current + 1); });
+    document.getElementById("player-close").addEventListener("click", function () { player.close(); });
+    player.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") show(current - 1);
+      if (event.key === "ArrowRight") show(current + 1);
+    });
+    player.addEventListener("click", function (event) { if (event.target === player) player.close(); });
+    player.addEventListener("close", function () {
+      document.body.classList.remove("has-dialog");
+      if (opener) opener.focus();
+    });
+  }
+
+  // Current section in the nav.
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav__links a[href^='#']"));
+  if (navLinks.length && "IntersectionObserver" in window) {
+    var sectionFor = {};
+    navLinks.forEach(function (link) {
+      var section = document.getElementById(link.getAttribute("href").slice(1));
+      if (section) sectionFor[section.id] = link;
+    });
+    var navIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = sectionFor[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (l) { l.classList.remove("is-active"); });
+          link.classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+    Object.keys(sectionFor).forEach(function (id) { navIo.observe(document.getElementById(id)); });
+  }
 })();

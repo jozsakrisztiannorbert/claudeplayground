@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Roland Frunza brag composition</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    /* Every frame is a pure function of time: all animations are CSS keyframes with absolute delays
+       on one 21 s timeline. The renderer pauses them and sets currentTime for each frame. */
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+    body { position: relative; }
+    .scene { position: absolute; inset: 0; opacity: 0; animation: hold 1ms linear both; }
+    .stage { position: absolute; inset: 0; }
+    .grain { opacity: 0.06; }
+    .bars { position: absolute; inset: 0; pointer-events: none; z-index: 65; }
+    .bars::before, .bars::after { content: ""; position: absolute; left: 0; right: 0; height: 110px; background: #000; }
+    .bars::before { top: 0; } .bars::after { bottom: 0; }
+
+    /* Scene 1: ident, 0 to 3.6 s */
+    .s1 { animation: appear 1ms 0ms linear both, vanish 1ms 3600ms linear both; }
+    .s1 .ident { position: absolute; animation: none; opacity: 1; }
+    .s1 .leaf--ident { width: 460px; stroke-width: 5; }
+    .s1 .leaf--ident .leaf__edge { stroke-dashoffset: 1340; animation: draw 1500ms 300ms var(--ease-cine) both; }
+    .s1 .leaf--ident .leaf__rib { stroke-dashoffset: 160; animation: draw 600ms 1500ms var(--ease-cine) both; }
+    .s1 .ident__word { font-size: 5.2rem; animation: ident-word 900ms 1600ms var(--ease-cine) both; }
+    .s1 .ident__role { font-size: 1.5rem; animation: ident-role 1000ms 2000ms var(--ease-cine) both; }
+    .s1 .dip { position: absolute; inset: 0; background: var(--bg); opacity: 0; animation: dip-in 300ms 3300ms linear both; }
+    @keyframes dip-in { to { opacity: 1; } }
+    @keyframes dip-out { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes vanish { to { opacity: 0; visibility: hidden; } }
+    @keyframes appear { to { opacity: 1; visibility: visible; } }
+    @keyframes hold { to { opacity: 0; } }
+
+    /* Scene 2: hero, 3.6 to 8.0 s */
+    .s2 { animation: appear 1ms 3600ms linear both, vanish 1ms 8000ms linear both; }
+    .s2 .nav { position: absolute; top: 0; left: 0; right: 0; width: 1920px; animation: rise 700ms 4200ms var(--ease-out) both; }
+    .s2 .nav { display: none; }
+    .s2 .hero { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; min-height: 0; padding-bottom: 170px; padding-inline: 110px; }
+    .s2 .hero__marks { inset: 150px 60px; }
+    @keyframes marks { from { inset: 190px 100px; opacity: 0; } to { inset: 150px 60px; opacity: 1; } }
+    .s2 .hero__frame { animation: frame-in 2400ms 3600ms var(--ease-cine) both; }
+    .s2 .hero__leak { animation: leak 3200ms 3900ms var(--ease-cine) both; }
+    .s2 .hero__marks { animation: marks 1400ms 4000ms var(--ease-out) both; }
+    .s2 .hero__copy > .eyebrow { animation: rise 900ms 4300ms var(--ease-out) both; }
+    .s2 .hero h1 .w > span { animation: word-up 1100ms var(--ease-cine) both; animation-delay: calc(4450ms + var(--i, 0) * 90ms); }
+    .s2 .hero__sub { animation: rise 900ms 5300ms var(--ease-out) both; }
+    .s2 .hero__actions { animation: rise 900ms 5500ms var(--ease-out) both; }
+    .s2 .hero h1 { font-size: 7.2rem; max-width: 14ch; }
+    .s2 .dip { position: absolute; inset: 0; background: var(--bg); opacity: 0; animation: dip-in 350ms 7650ms linear both; }
+    .s2 .dip-open { position: absolute; inset: 0; background: var(--bg); opacity: 1; animation: dip-out 500ms 3600ms linear both; }
+
+    /* Scene 3: reel, 8.0 to 12.0 s */
+    .s3 { animation: appear 1ms 8000ms linear both, vanish 1ms 12000ms linear both; }
+    .s3 .films { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; padding: 150px 110px; max-width: none; }
+    .s3 .section-head { animation: rise 800ms 8100ms var(--ease-out) both; margin-bottom: 36px; }
+    .s3 .reel { gap: 26px; }
+    .s3 .reel__item { clip-path: inset(0 100% 0 0); animation: wipe 1000ms var(--ease-cine) both; animation-delay: calc(8300ms + var(--i, 0) * 160ms); }
+    .s3 .reel__item img { transform: scale(1.12); animation: settle 1300ms var(--ease-cine) both; animation-delay: calc(8300ms + var(--i, 0) * 160ms); }
+    @keyframes wipe { to { clip-path: inset(0 0 0 0); } }
+    @keyframes settle { to { transform: none; } }
+    .s3 .reel__item:nth-child(n+3) { display: none; }
+    .s3 .reel__item--wide { grid-column: 1 / span 8; }
+    .s3 .reel__item:nth-child(2) { grid-column: 9 / span 4; }
+    .s3 .reel__item:nth-child(2) .frame { max-height: 560px; }
+    .s3 .reel__item:nth-child(2) .frame img { height: 560px; object-fit: cover; }
+    .s3 .reel__item--wide .frame img { height: 560px; object-fit: cover; }
+    .s3 .cursor { position: absolute; width: 22px; height: 22px; z-index: 5; left: 1500px; top: 980px; opacity: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,.6)); animation: cursor-move 1200ms 9300ms var(--ease-cine) both; }
+    @keyframes cursor-move { 0% { left: 1500px; top: 980px; opacity: 0; } 15% { opacity: 1; } 100% { left: 560px; top: 560px; opacity: 1; } }
+    .s3 .frame__play { animation: play-show 420ms 10400ms var(--ease-cine) both; }
+    @keyframes play-show { to { opacity: 1; transform: none; } }
+    .s3 .frame__play::after { animation: ring 1400ms 10500ms var(--ease-out) infinite; }
+    .s3 .films__ambient { animation: lit 900ms 10400ms var(--ease-out) both; }
+    @keyframes lit { to { opacity: 0.4; } }
+    .s3 .reel__item:first-child .frame img { animation: settle 1300ms 8300ms var(--ease-cine) both, zoom 900ms 10400ms var(--ease-cine) both; }
+    @keyframes zoom { from { transform: none; filter: saturate(0.85) brightness(0.92); } to { transform: scale(1.04); filter: saturate(1.05) brightness(1); } }
+    .s3 .reel__item:first-child .caption b { animation: gold 400ms 10400ms var(--ease-out) both; }
+    @keyframes gold { to { color: var(--accent); } }
+    .s3 .dip { position: absolute; inset: 0; background: var(--bg); opacity: 0; animation: dip-in 350ms 11650ms linear both; }
+
+    /* Scene 4: grade, 12.0 to 15.6 s */
+    .s4 { animation: appear 1ms 12000ms linear both, vanish 1ms 15600ms linear both; }
+    .s4 .grade { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; padding: 150px 110px; max-width: none; border: 0; grid-template-columns: 1fr; gap: 28px; align-content: start; }
+    .s4 .grade__text { animation: rise 800ms 12100ms var(--ease-out) both; }
+    .s4 .compare { height: 540px; aspect-ratio: auto; animation: rise 900ms 12200ms var(--ease-out) both; --split: 12%; }
+    .s4 .compare__log { animation: sweep 2600ms 12700ms var(--ease-cine) both; }
+    .s4 .compare__handle { animation: sweep-handle 2600ms 12700ms var(--ease-cine) both; }
+    @keyframes sweep { from { clip-path: inset(0 88% 0 0); } to { clip-path: inset(0 22% 0 0); } }
+    @keyframes sweep-handle { from { left: 12%; } to { left: 78%; } }
+    .s4 .dip { position: absolute; inset: 0; background: var(--bg); opacity: 0; animation: dip-in 350ms 15250ms linear both; }
+
+    /* Scene 5: book, 15.6 to 18.4 s */
+    .s5 { animation: appear 1ms 15600ms linear both, vanish 1ms 18400ms linear both; }
+    .s5 .book { position: absolute; inset: 0; border: 0; }
+    .s5 .book__inner { padding: 110px; max-width: none; grid-template-columns: 5fr 6fr; gap: 96px; align-items: center; height: 1080px; }
+    .s5 .book__intro { animation: rise 800ms 15700ms var(--ease-out) both; }
+    .s5 .form { animation: rise 900ms 15900ms var(--ease-out) both; }
+    .s5 .typed { position: relative; }
+    .s5 .typed::after { content: ""; position: absolute; right: 14px; top: 50%; width: 1px; height: 18px; margin-top: -9px; background: var(--accent); animation: caret 600ms 16300ms steps(2) 4 both; }
+    @keyframes caret { from { opacity: 1; } to { opacity: 0; } }
+    .s5 .typed span { display: inline-block; opacity: 0; animation: appear 1ms linear both; animation-delay: calc(16300ms + var(--c, 0) * 110ms); }
+    .s5 .btn--primary { animation: press 300ms 17500ms var(--ease-out) both; }
+    @keyframes press { 0% { background-size: 0% 100%; } 100% { background-size: 100% 100%; color: var(--bg); border-color: var(--fg); } }
+    .s5 .form__status { opacity: 0; animation: appear 1ms 17800ms linear both; color: var(--accent); font-weight: 500; }
+    .s5 .dip { position: absolute; inset: 0; background: var(--bg); opacity: 0; animation: dip-in 350ms 18050ms linear both; }
+
+    /* Scene 6: outro, 18.4 to 21.0 s */
+    .s6 { animation: appear 1ms 18400ms linear both; }
+    .s6 .ident { position: absolute; animation: none; opacity: 1; }
+    .s6 .leaf--ident { width: 300px; stroke-width: 5; }
+    .s6 .leaf--ident .leaf__edge, .s6 .leaf--ident .leaf__rib { stroke-dashoffset: 0; animation: none; }
+    .s6 .ident__inner { opacity: 0; animation: rise 1000ms 18500ms var(--ease-cine) both; }
+    .s6 .ident__word { font-size: 4rem; opacity: 1; transform: none; animation: none; }
+    .s6 .ident__role { font-size: 1.1rem; opacity: 1; letter-spacing: 0.42em; animation: none; }
+    .s6 .ask { display: flex; gap: 28px; align-items: center; margin-top: 30px; opacity: 0; animation: rise 800ms 19300ms var(--ease-out) both; font-size: 1.15rem; color: var(--fg-2); }
+    .s6 .ask .btn { font-size: 1.05rem; padding: 16px 26px; }
+    .s6 .fade { position: absolute; inset: 0; background: var(--bg); opacity: 0; animation: dip-in 600ms 20400ms linear both; }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="bars" aria-hidden="true"></div>
+
+  <!-- Scene 1: ident -->
+  <section class="scene s1">
+    <div class="ident">
+      <div class="ident__inner">
+        <svg class="leaf leaf--ident" viewBox="0 0 520 235" aria-hidden="true"><path class="leaf__edge" d="M20,176 C65,198 120,214 200,214 C310,208 400,168 449,108 C471,82 491,50 500,20 C457,60 387,86 319,96 C259,106 209,132 163,160 C143,174 151,200 189,210"/><path class="leaf__rib" d="M168,170 C215,160 273,153 321,149"/></svg>
+        <span class="ident__word" translate="no">roland frunza</span>
+        <span class="ident__role">videography</span>
+      </div>
+    </div>
+    <div class="dip"></div>
+  </section>
+
+  <!-- Scene 2: hero -->
+  <section class="scene s2">
+    <header class="nav">
+      <a class="nav__brand" href="#"><svg class="leaf" viewBox="0 0 520 235" aria-hidden="true"><path class="leaf__edge" d="M20,176 C65,198 120,214 200,214 C310,208 400,168 449,108 C471,82 491,50 500,20 C457,60 387,86 319,96 C259,106 209,132 163,160 C143,174 151,200 189,210"/><path class="leaf__rib" d="M168,170 C215,160 273,153 321,149"/></svg><span class="wordmark">roland frunza</span></a>
+      <nav class="nav__links"><a href="#">Films</a><a href="#">About</a><a href="#">Process</a></nav>
+      <a class="btn btn--small" href="#">Book a date</a>
+    </header>
+    <section class="hero">
+      <img class="hero__frame" src="../../assets/hero-reel.jpg" width="1920" height="1080" alt="">
+      <div class="hero__leak"></div>
+      <div class="hero__marks"><span></span><span></span><span></span><span></span></div>
+      <div class="hero__copy">
+        <p class="eyebrow">Wedding and brand videographer</p>
+        <h1><span class="w" style="--i:0"><span>Films</span></span> <span class="w" style="--i:1"><span>that</span></span> <span class="w" style="--i:2"><span>still</span></span> <span class="w" style="--i:3"><span>feel</span></span> <span class="w" style="--i:4"><span>like</span></span> <span class="w" style="--i:5"><span>the</span></span> <span class="w" style="--i:6"><span>day.</span></span></h1>
+        <p class="hero__sub">Wedding films, brand stories and live events, shot and graded by one pair of hands.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#">Book a date</a>
+          <a class="btn btn--ghost btn--play" href="#"><span class="btn__ring"><svg class="icon" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>Play showreel</a>
+        </div>
+      </div>
+    </section>
+    <div class="dip-open"></div>
+    <div class="dip"></div>
+  </section>
+
+  <!-- Scene 3: reel -->
+  <section class="scene s3">
+    <section class="films">
+      <img class="films__ambient" src="../../assets/film-01.jpg" width="1600" height="900" alt="">
+      <header class="section-head">
+        <p class="eyebrow">Selected films</p>
+        <h2>Five films from the last two seasons.</h2>
+      </header>
+      <ul class="reel">
+        <li class="reel__item reel__item--wide" style="--i:0">
+          <span class="frame"><img src="../../assets/film-01.jpg" width="1600" height="900" alt=""><span class="frame__play"><svg class="icon" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span></span>
+          <figure class="caption"><figcaption><b>Ana and Mihai, Brașov</b><span>Wedding film</span><time>6:40</time></figcaption></figure>
+        </li>
+        <li class="reel__item reel__item--tall" style="--i:1">
+          <span class="frame"><img src="../../assets/film-02.jpg" width="1200" height="1500" alt=""></span>
+          <figure class="caption"><figcaption><b>Northline Coffee</b><span>Brand film</span><time>1:30</time></figcaption></figure>
+        </li>
+        <li class="reel__item"></li><li class="reel__item"></li><li class="reel__item"></li>
+      </ul>
+      <svg class="cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l16 9-7 2-3 7z" fill="#e9e6df" stroke="#0c0e11" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    </section>
+    <div class="dip"></div>
+  </section>
+
+  <!-- Scene 4: grade -->
+  <section class="scene s4">
+    <section class="grade">
+      <div class="grade__text">
+        <h2>Every frame is graded by hand.</h2>
+        <p>Cameras record flat so nothing is lost. The colour, the warmth and the depth are decided afterwards, shot by shot.</p>
+      </div>
+      <div class="compare">
+        <img class="compare__graded" src="../../assets/film-03.jpg" width="1600" height="900" alt="">
+        <img class="compare__log" src="../../assets/film-03.jpg" width="1600" height="900" alt="">
+        <span class="compare__handle"><span></span></span>
+      </div>
+      <p class="compare__legend"><span>Camera original</span><span>Graded</span></p>
+    </section>
+    <div class="dip"></div>
+  </section>
+
+  <!-- Scene 5: book -->
+  <section class="scene s5">
+    <section class="book">
+      <img class="book__frame" src="../../assets/contact.jpg" width="1920" height="800" alt="">
+      <div class="book__inner">
+        <div class="book__intro">
+          <p class="eyebrow">Book a date</p>
+          <h2>Tell me about the day.</h2>
+          <p>Dates go fast between May and October. Write a few lines and I will answer within two working days.</p>
+        </div>
+        <div class="form">
+          <div class="field"><label>Your name</label><div class="typed"><input type="text" value="" readonly aria-hidden="true" style="position:absolute;opacity:0"><div style="padding:12px 14px;border:1px solid var(--line);background:var(--bg);min-height:46px"><span style="--c:0">A</span><span style="--c:1">n</span><span style="--c:2">a</span><span style="--c:3">&nbsp;</span><span style="--c:4">P</span><span style="--c:5">o</span><span style="--c:6">p</span></div></div></div>
+          <div class="field"><label>Email</label><div style="padding:12px 14px;border:1px solid var(--line);background:var(--bg);color:var(--fg)">ana.pop@gmail.com</div></div>
+          <div class="field field--half"><label>Date of the shoot</label><div style="padding:12px 14px;border:1px solid var(--line);background:var(--bg);color:var(--fg)">12.09.2027</div></div>
+          <div class="field field--half"><label>What are we filming</label><div style="padding:12px 14px;border:1px solid var(--line);background:var(--bg);color:var(--fg)">Wedding</div></div>
+          <div class="form__actions"><span class="btn btn--primary">Book a date</span><p class="form__status">Request sent. I will answer within two working days.</p></div>
+        </div>
+      </div>
+    </section>
+    <div class="dip"></div>
+  </section>
+
+  <!-- Scene 6: outro -->
+  <section class="scene s6">
+    <div class="ident">
+      <div class="ident__inner">
+        <svg class="leaf leaf--ident" viewBox="0 0 520 235" aria-hidden="true"><path class="leaf__edge" d="M20,176 C65,198 120,214 200,214 C310,208 400,168 449,108 C471,82 491,50 500,20 C457,60 387,86 319,96 C259,106 209,132 163,160 C143,174 151,200 189,210"/><path class="leaf__rib" d="M168,170 C215,160 273,153 321,149"/></svg>
+        <span class="ident__word" translate="no">roland frunza</span>
+        <span class="ident__role">videography</span>
+        <div class="ask"><span>@rolandfrunza</span><span class="btn btn--primary">Book a date</span></div>
+      </div>
+    </div>
+    <div class="fade"></div>
+  </section>
+
+  <script>
+    // Deterministic timeline: pause every animation and scrub it to t (ms).
+    window.seek = function (t) {
+      document.getAnimations().forEach(function (a) {
+        try { a.pause(); a.currentTime = t; } catch (e) { /* scroll-driven animations have no time */ }
+      });
+      return document.getAnimations().length;
+    };
+    window.ready = Promise.all([document.fonts.ready].concat(Array.prototype.map.call(document.images, function (img) {
+      return img.complete ? Promise.resolve() : new Promise(function (r) { img.onload = img.onerror = r; });
+    })));
+  </script>
+</body>
+</html>

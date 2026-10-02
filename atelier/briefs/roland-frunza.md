@@ -19,6 +19,10 @@ data. So this round was designed from the brief alone.
 
 ### Facts
 
+- Logo supplied on 2026-10-02: a single-stroke leaf over "roland frunza" in a lowercase rounded
+  geometric sans, with "photography" wide-tracked beneath, white on a golden aerial landscape.
+  Saved as `atelier/research/roland-frunza/logo-original.webp`. The leaf is the surname: frunză = leaf.
+
 - Name: Roland Frunza. Handle: @rolandfrunza. Role: videographer (from the brief).
 - Surname is Romanian or Moldovan; the audience is assumed to be in Romania and the diaspora.
 

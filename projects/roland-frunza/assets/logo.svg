@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" fill="none">
+  <!-- Roland Frunza, videography lockup. Wordmark set in Quicksand (SIL OFL), the closest open face to the original rounded geometric sans. -->
+  <g stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,10)">
+    <path d="M20,176 C65,198 120,214 200,214 C310,208 400,168 449,108 C471,82 491,50 500,20 C457,60 387,86 319,96 C259,106 209,132 163,160 C143,174 151,200 189,210"/>
+    <path d="M168,170 C215,160 273,153 321,149"/>
+  </g>
+  <text x="260" y="330" text-anchor="middle" fill="currentColor" font-family="Quicksand, 'Varela Round', 'Nunito', sans-serif" font-weight="600" font-size="92" letter-spacing="-1">roland frunza</text>
+  <text x="260" y="395" text-anchor="middle" fill="currentColor" font-family="Quicksand, 'Varela Round', 'Nunito', sans-serif" font-weight="400" font-size="30" letter-spacing="13">videography</text>
+</svg>

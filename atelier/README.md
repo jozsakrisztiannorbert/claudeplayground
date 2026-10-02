@@ -22,6 +22,8 @@ static site, with a documented design system and QA evidence.
 | `web-design-guidelines` | github.com/vercel-labs/agent-skills + web-interface-guidelines | MIT | QA |
 | `playwright-cli` | github.com/microsoft/playwright-cli | Apache-2.0 | researcher, QA |
 | `design-md-library` | github.com/VoltAgent/awesome-design-md | MIT | director |
+| `brag` | github.com/latent-spaces/brag (needs Hyperframes) | MIT | builder, for launch videos |
+| `brag-slim` | github.com/latent-spaces/brag | MIT | builder, launch videos with Playwright and ffmpeg |
 
 To refresh a vendored skill, re-clone the upstream and copy the SKILL.md over; keep the Atelier README
 notes next to it.
@@ -32,6 +34,15 @@ When no image-generation tool and no image host is reachable, the builder genera
 layout can be judged with real weight and contrast. Each frame is a 16:9 or 4:5 JPEG made with
 ImageMagick: a two-stop gradient in the project's grade, fractal noise at low opacity for grain, and a
 vignette. Every placeholder is listed in the project README with the real shot that should replace it.
+
+## Launch video
+
+`brag-slim` turns a finished project into a 20-second launch video. The Atelier way: write
+`brag-output/brag-plan.md`, build `brag-output/work/composition.html` as a page where every animation is a
+CSS keyframe with an absolute delay on one timeline and `window.seek(t)` scrubs them all, render frames
+with Playwright (`work/render.js`), synthesise a music bed with ffmpeg when the bundled tracks do not fit
+the tone (`work/make-music.sh`), encode, pull the poster frame and bake it as frame 0. See
+`projects/roland-frunza/brag-output/` for the reference run.
 
 ## Definition of done
 

@@ -7,7 +7,7 @@ turn a creator's or brand's public presence into a finished website design.
 
 - `.claude/agents/` the four agency roles: researcher, director, builder, QA.
 - `.claude/skills/` vendored skills (taste-skill, image-to-code, redesign, web-design-guidelines,
-  playwright-cli, design-md-library). Each folder has a README with its upstream and license.
+  playwright-cli, design-md-library, brag, brag-slim). Each folder has a README with its upstream and license.
 - `atelier/` the pipeline description and per-client briefs and research.
 - `projects/<client>/` one static site per client: `DESIGN.md`, `index.html`, `styles.css`,
   `script.js`, `assets/`, `screenshots/`, `README.md`.
@@ -26,6 +26,12 @@ Run the roles with the Agent tool, or do the steps inline in that order on a sma
 - No three-equal-cards feature rows, no fake div screenshots, no scroll cues, no section numbering.
 - Every image slot is either a real client asset or a clearly labeled local placeholder.
 - Facts that could not be verified are listed in the project README, never silently invented.
+
+## Launch video
+
+After QA, `brag-slim` makes the launch video into `projects/<client>/brag-output/` (plan, composition,
+brag.mp4, brag.jpg, share-copy.txt). Use the bundled brag music only when its tone fits; otherwise
+synthesise a bed with ffmpeg. Frames and preview stills stay out of git.
 
 ## Tooling
 

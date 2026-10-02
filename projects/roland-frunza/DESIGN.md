@@ -20,6 +20,19 @@ restrained scroll reveals (precedent family: Runway, with ElevenLabs for the dar
 `.claude/skills/design-md-library/references/runwayml.md` (image as UI, single typeface, tight display,
 zero shadows, uppercase micro labels as structure) and `elevenlabs.md` (dark surface layering).
 
+## Logo
+
+Roland's photography logo is a single-stroke leaf (his surname, Frunză, is Romanian for leaf) over a
+lowercase rounded geometric wordmark and a wide-tracked "photography" line. The videography version keeps
+the leaf untouched, traced as one continuous SVG path plus the midrib so it can draw itself, swaps the
+descriptor for "videography", and sets the wordmark in Quicksand, the closest open face to the original.
+Files: `assets/logo-mark.svg` (leaf), `assets/logo.svg` (lockup), inline `<svg class="leaf">` in the page.
+The original is kept in `atelier/research/roland-frunza/logo-original.webp`.
+
+Ident (top of page, once per browser session, replayed by clicking the logo while at the top):
+0.2s to 1.7s the leaf draws stem to tip and back; 1.3s the midrib; 1.25s the wordmark settles; 1.65s
+"videography" tracks in from wide; 2.5s the card fades into the letterbox leader.
+
 ## Tokens
 
 Theme: single dark theme, locked. `color-scheme: dark`.
@@ -34,7 +47,7 @@ Theme: single dark theme, locked. `color-scheme: dark`.
 | `--fg-3` | `#6d737a` | tertiary text, captions |
 | `--accent` | `#d8c29b` | the only accent: tungsten highlight, used for links, focus, the play glyph |
 
-Type: `Bricolage Grotesque` for display (optical sizing, width axis, has character without a serif),
+Type: `Quicksand` only inside the logo lockup. `Bricolage Grotesque` for display (optical sizing, width axis, has character without a serif),
 `Geist` for body and UI. Fallback stacks declared. Display tracking -0.03em, line-height 0.95 to 1.0.
 Scale: 13 / 15 / 17 / 22 / 32 / 48 / clamp(44px, 8vw, 112px).
 
@@ -48,13 +61,14 @@ Radius: all-sharp (0) on frames and buttons. Pill only on the single tag chip in
 2. Hero: left-weighted headline over a full-bleed showreel frame, 1 eyebrow, 1 subline, 1 CTA pair. Fits 100dvh.
 3. Selected films: editorial masonry, 5 frames in a 12-column grid with mixed 16:9 and 4:5 ratios, captions below frames.
 4. About: 2-column, portrait right, text left with a short facts list (not a spec table).
-5. What I film: horizontal marquee of film types (the one marquee on the page), then a 2-column stacked list with large headings. No equal cards.
-6. How a film happens: vertical timeline of 4 real steps, verb-noun labels, no numbering.
-7. Kind words: two quotes, max 3 lines each, marked as sample in README.
-8. Book a date: full-bleed frame with a short form (name, email, date, type) that prevents default and shows an inline confirmation; email shown as text with a copy button.
-9. Footer: wordmark, Instagram, Facebook, email, year.
+5. The grade: one headline and a full-width before/after slider (camera original against the graded frame), driven by a range input.
+6. What I film: horizontal marquee of film types (the one marquee on the page), then a 2-column list of expandable services (`details`), each with what is included.
+7. How a film happens: vertical timeline of 4 real steps, verb-noun labels, no numbering.
+8. Kind words: two quotes, max 3 lines each, marked as sample in README.
+9. Book a date: full-bleed frame with a short form (name, email, date, type) that prevents default and shows an inline confirmation; email shown as text with a copy button.
+10. Footer: wordmark, Instagram, Facebook, email, year.
 
-Eyebrow budget: ceil(9/3) = 3. Used: hero (1), selected films (1), book a date (1).
+Eyebrow budget: ceil(10/3) = 4. Used: hero (1), selected films (1), book a date (1).
 
 CTA intent map: "Book a date" is the only contact label (nav, hero, section 8). "See the films" is the
 only portfolio label (hero secondary).
@@ -76,6 +90,20 @@ only portfolio label (hero secondary).
 | Process timeline | each tick draws in and its heading warms when in view | progress through the steps |
 | Booking frame | one 14s pan when the section arrives | the last shot moves |
 | Buttons | fill wipes left to right | consistent with the frame reveals |
+
+## Interaction map
+
+| Element | Interaction |
+|---|---|
+| Logo in the nav | hover redraws the leaf; click at the top of the page replays the ident |
+| Hero | a warm key light follows the pointer across the frame (pointer devices only) |
+| Film frames | click opens an in-page player with previous and next, arrow keys, Esc, and a link to the film on Instagram |
+| Grade slider | drag, click, touch or arrow keys move the split between camera original and graded |
+| Services | each opens to show what is included; one open at a time |
+| Nav links | the current section is underlined as it scrolls into view |
+| Email | copy button with a select-text fallback |
+| Booking form | inline validation, focus moves to the first problem |
+| Motion toggle | footer button turns every animation off and remembers the choice |
 
 ## Image slots
 

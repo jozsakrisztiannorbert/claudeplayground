@@ -1,2 +1,4 @@
 .playwright-cli/
 node_modules/
+projects/*/brag-output/work/frames/
+projects/*/brag-output/work/preview-*.png
