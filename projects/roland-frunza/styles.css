@@ -159,12 +159,12 @@ button { touch-action: manipulation; }
 }
 .wordmark { font-family: var(--font-brand); font-weight: 600; font-size: 1.25rem; letter-spacing: -0.01em; line-height: 1; display: grid; }
 .wordmark small { font-family: var(--font-brand); font-weight: 400; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: lowercase; color: var(--fg-2); margin-top: 6px; }
-.leaf { width: 44px; height: 20px; fill: none; stroke: currentColor; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; flex: none; overflow: visible; }
-.leaf__edge { stroke-dasharray: 1340; }
-.leaf__rib { stroke-dasharray: 160; }
+.leaf { width: 46px; height: 21px; fill: none; stroke: currentColor; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; flex: none; overflow: visible; }
+.leaf__edge { stroke-dasharray: 1010; }
+.leaf__rib { stroke-dasharray: 170; }
 .nav__brand .leaf__edge, .nav__brand .leaf__rib { transition: stroke-dashoffset 1200ms var(--ease-cine); stroke-dashoffset: 0; }
 .nav__brand:hover .leaf__edge { animation: leaf-edge-redraw 1400ms var(--ease-cine); }
-@keyframes leaf-edge-redraw { 0% { stroke-dashoffset: 1340; } 100% { stroke-dashoffset: 0; } }
+@keyframes leaf-edge-redraw { 0% { stroke-dashoffset: 1010; } 100% { stroke-dashoffset: 0; } }
 .nav__links a { position: relative; padding-bottom: 2px; }
 .nav__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 320ms var(--ease-cine); }
 .nav__links a.is-active { color: var(--fg); }
@@ -242,9 +242,9 @@ button { touch-action: manipulation; }
 /* Ident: the leaf draws itself in one stroke, the name settles, the role tracks in, then the card fades into the leader */
 .ident { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; background: var(--bg); pointer-events: none; animation: ident-out 700ms var(--ident) var(--ease-cine) both, ident-done 1ms calc(var(--ident) + 700ms) both; }
 .ident__inner { display: grid; justify-items: center; gap: 22px; color: var(--fg); padding-inline: var(--gutter); }
-.leaf--ident { width: min(280px, 60vw); height: auto; stroke-width: 6; }
-.leaf--ident .leaf__edge { stroke-dashoffset: 1340; animation: draw 1500ms 200ms var(--ease-cine) both; }
-.leaf--ident .leaf__rib { stroke-dashoffset: 160; animation: draw 600ms 1300ms var(--ease-cine) both; }
+.leaf--ident { width: min(300px, 62vw); height: auto; stroke-width: 7; }
+.leaf--ident .leaf__edge { stroke-dashoffset: 1010; animation: draw 1500ms 200ms var(--ease-cine) both; }
+.leaf--ident .leaf__rib { stroke-dashoffset: 170; animation: draw 600ms 1300ms var(--ease-cine) both; }
 .ident__word { font-family: var(--font-brand); font-weight: 600; font-size: clamp(2rem, 1rem + 4vw, 3.4rem); letter-spacing: -0.01em; line-height: 1; opacity: 0; transform: translateY(14px); animation: ident-word 900ms 1250ms var(--ease-cine) both; }
 .ident__role { font-family: var(--font-brand); font-weight: 400; font-size: clamp(0.8rem, 0.6rem + 0.8vw, 1.05rem); letter-spacing: 0.42em; text-indent: 0.42em; color: var(--fg-2); opacity: 0; animation: ident-role 1000ms 1650ms var(--ease-cine) both; }
 @keyframes draw { to { stroke-dashoffset: 0; } }

@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 235" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
   <!-- Leaf mark traced from Roland Frunza's photography logo (frunza: leaf). One continuous stroke plus the midrib. -->
-  <path d="M20,176 C65,198 120,214 200,214 C310,208 400,168 449,108 C471,82 491,50 500,20 C457,60 387,86 319,96 C259,106 209,132 163,160 C143,174 151,200 189,210"/>
-  <path d="M168,170 C215,160 273,153 321,149"/>
+  <path d="M20,181 C60,194 110,203 155,203 C195,226 240,233 285,227 C365,216 432,167 470,103 C484,77 494,47 500,23 C470,50 420,67 385,80 C330,93 270,105 240,113 C205,122 180,140 168,160 C158,177 154,191 155,203"/>
+  <path d="M166,204 C205,196 255,184 300,165 C308,161 314,158 320,155"/>
 </svg>

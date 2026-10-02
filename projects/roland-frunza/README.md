@@ -32,8 +32,8 @@ The leaf is traced by hand from the photography logo at 1280px; it matches withi
 the vector original. If Roland has the source file (AI, EPS or SVG), drop its leaf path into the two
 `<path>` elements of `<svg class="leaf">` in `index.html` and into `assets/logo-mark.svg`, keeping the
 `viewBox`. The wordmark uses Quicksand; if the original typeface can be licensed for the web, swap
-`--font-brand` in `styles.css`. The ident plays once per browser session; clicking the logo at the top
-of the page replays it.
+`--font-brand` in `styles.css`. The ident plays on every load; clicking the logo at the top of the page
+replays it.
 
 ## Placeholders to replace
 

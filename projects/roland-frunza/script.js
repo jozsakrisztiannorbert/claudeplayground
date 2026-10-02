@@ -184,17 +184,13 @@
     });
   }
 
-  // Ident: play once per browser session; clicking the logo at the top of the page replays it.
+  // Ident: plays on every load; clicking the logo at the top of the page replays it.
   var ident = document.getElementById("ident");
   var brand = document.getElementById("brand");
-  var identSeen = false;
-  try { identSeen = sessionStorage.getItem("rf-ident") === "1"; sessionStorage.setItem("rf-ident", "1"); } catch (e) { /* storage unavailable */ }
-  if (identSeen) root.classList.add("ident-skip");
   if (ident && brand) {
     brand.addEventListener("click", function (event) {
       if (window.scrollY > 10 || root.getAttribute("data-motion") === "off") return;
       event.preventDefault();
-      root.classList.remove("ident-skip");
       var fresh = ident.cloneNode(true);
       ident.parentNode.replaceChild(fresh, ident);
       ident = fresh;

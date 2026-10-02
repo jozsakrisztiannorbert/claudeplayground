@@ -29,7 +29,7 @@ descriptor for "videography", and sets the wordmark in Quicksand, the closest op
 Files: `assets/logo-mark.svg` (leaf), `assets/logo.svg` (lockup), inline `<svg class="leaf">` in the page.
 The original is kept in `atelier/research/roland-frunza/logo-original.webp`.
 
-Ident (top of page, once per browser session, replayed by clicking the logo while at the top):
+Ident (top of page, on every load, replayed by clicking the logo while at the top):
 0.2s to 1.7s the leaf draws stem to tip and back; 1.3s the midrib; 1.25s the wordmark settles; 1.65s
 "videography" tracks in from wide; 2.5s the card fades into the letterbox leader.
 
