@@ -22,4 +22,5 @@ static site per client.
 - `npm install -g @playwright/cli` for screenshots and research; `.playwright/cli.config.json` points it
   at a local Chromium.
 - ImageMagick for placeholder stills when no image host is reachable.
+- `atelier/qa-shots.sh projects/<client>` captures the QA screenshots and prints overflow, font and image checks.
 - `npx serve projects/<client>` to preview.

@@ -13,6 +13,8 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="leader" aria-hidden="true"><span class="leader__bar"></span><span class="leader__bar"></span></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">
     <a class="nav__brand" href="#top" translate="no">Roland Frunza</a>
@@ -22,6 +24,7 @@
       <a href="#process">Process</a>
     </nav>
     <a class="btn btn--small" href="#book">Book a date</a>
+    <span class="nav__scrub" aria-hidden="true"></span>
   </header>
 
   <main id="main">
@@ -29,14 +32,16 @@
     <!-- SLOT: hero-reel.jpg, 16:9. Replace with the showreel poster frame, or a muted autoplay MP4 with this image as poster. -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <img class="hero__frame" src="assets/hero-reel.jpg" width="1920" height="1080" alt="" fetchpriority="high" decoding="async">
+      <div class="hero__leak" aria-hidden="true"></div>
+      <div class="hero__marks" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
       <div class="hero__copy">
         <p class="eyebrow">Wedding and brand videographer</p>
         <h1 id="hero-title">Films that still feel like the day.</h1>
         <p class="hero__sub">Wedding films, brand stories and live events, shot and graded by one pair of hands.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="#book">Book a date</a>
-          <a class="btn btn--ghost" href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <a class="btn btn--ghost btn--play" href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">
+            <span class="btn__ring" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z"/></svg></span>
             Play showreel
           </a>
         </div>
@@ -44,63 +49,69 @@
     </section>
 
     <section class="films" id="films" aria-labelledby="films-title">
-      <header class="section-head">
+      <img class="films__ambient" id="films-ambient" src="assets/film-01.jpg" width="1600" height="900" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <header class="section-head" data-reveal>
         <p class="eyebrow">Selected films</p>
         <h2 id="films-title">Five films from the last two seasons.</h2>
       </header>
 
       <ul class="reel">
         <!-- SLOT: film-01.jpg, 16:9. Strongest wedding film still. -->
-        <li class="reel__item reel__item--wide">
+        <li class="reel__item reel__item--wide" data-reveal="frame" style="--i:0">
           <a class="frame" href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">
             <img src="assets/film-01.jpg" width="1600" height="900" alt="Still from the wedding film of Ana and Mihai in Brașov" loading="lazy" decoding="async">
+            <span class="frame__play" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M8 5.5v13l11-6.5z"/></svg></span>
           </a>
           <figure class="caption">
             <figcaption><b>Ana and Mihai, Brașov</b><span>Wedding film</span><time>6:40</time></figcaption>
           </figure>
         </li>
         <!-- SLOT: film-02.jpg, 4:5. Vertical frame cut for reels. -->
-        <li class="reel__item reel__item--tall">
+        <li class="reel__item reel__item--tall" data-reveal="frame" style="--i:1">
           <a class="frame" href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">
             <img src="assets/film-02.jpg" width="1200" height="1500" alt="Vertical still from a brand film for Northline Coffee" loading="lazy" decoding="async">
+            <span class="frame__play" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M8 5.5v13l11-6.5z"/></svg></span>
           </a>
           <figure class="caption">
             <figcaption><b>Northline Coffee</b><span>Brand film</span><time>1:30</time></figcaption>
           </figure>
         </li>
         <!-- SLOT: film-03.jpg, 16:9. Brand or commercial still. -->
-        <li class="reel__item reel__item--half">
+        <li class="reel__item reel__item--half" data-reveal="frame" style="--i:2">
           <a class="frame" href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">
             <img src="assets/film-03.jpg" width="1600" height="900" alt="Still from a music video shot at night in Cluj" loading="lazy" decoding="async">
+            <span class="frame__play" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M8 5.5v13l11-6.5z"/></svg></span>
           </a>
           <figure class="caption">
             <figcaption><b>A night in Cluj</b><span>Music video</span><time>3:12</time></figcaption>
           </figure>
         </li>
         <!-- SLOT: film-04.jpg, 4:5. Vertical detail shot. -->
-        <li class="reel__item reel__item--tall">
+        <li class="reel__item reel__item--tall" data-reveal="frame" style="--i:3">
           <a class="frame" href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">
             <img src="assets/film-04.jpg" width="1200" height="1500" alt="Vertical still from the wedding film of Ioana and Dan in the Danube Delta" loading="lazy" decoding="async">
+            <span class="frame__play" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M8 5.5v13l11-6.5z"/></svg></span>
           </a>
           <figure class="caption">
             <figcaption><b>Ioana and Dan, Danube Delta</b><span>Wedding film</span><time>7:05</time></figcaption>
           </figure>
         </li>
         <!-- SLOT: film-05.jpg, 16:9. Event or festival still. -->
-        <li class="reel__item reel__item--half">
+        <li class="reel__item reel__item--half" data-reveal="frame" style="--i:4">
           <a class="frame" href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">
             <img src="assets/film-05.jpg" width="1600" height="900" alt="Still from a festival recap film" loading="lazy" decoding="async">
+            <span class="frame__play" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M8 5.5v13l11-6.5z"/></svg></span>
           </a>
           <figure class="caption">
             <figcaption><b>Festival recap, Cluj</b><span>Event film</span><time>0:58</time></figcaption>
           </figure>
         </li>
       </ul>
-      <p class="films__more"><a href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">More films on Instagram</a></p>
+      <p class="films__more" data-reveal><a href="https://www.instagram.com/rolandfrunza/" target="_blank" rel="noopener">More films on Instagram</a></p>
     </section>
 
     <section class="about" id="about" aria-labelledby="about-title">
-      <div class="about__text">
+      <div class="about__text" data-reveal>
         <h2 id="about-title">One person, from the first call to the final grade.</h2>
         <p>I am Roland. I film the day as it happens, without staging, and cut it so the people in it recognise themselves. No two films share a template.</p>
         <p>Couples get a film they will watch on anniversaries. Brands get a story their customers finish watching.</p>
@@ -111,7 +122,7 @@
         </dl>
       </div>
       <!-- SLOT: portrait.jpg, 4:5. Portrait of Roland on set, natural light. -->
-      <img class="about__portrait" src="assets/portrait.jpg" width="1200" height="1500" alt="Roland Frunza holding a cinema camera on a shoot" loading="lazy" decoding="async">
+      <img class="about__portrait" data-reveal="frame" src="assets/portrait.jpg" width="1200" height="1500" alt="Roland Frunza holding a cinema camera on a shoot" loading="lazy" decoding="async">
     </section>
 
     <section class="kinds" aria-labelledby="kinds-title">
@@ -123,7 +134,7 @@
         <button class="marquee__toggle" type="button" id="marquee-toggle" aria-pressed="false">Pause</button>
       </div>
       <h2 id="kinds-title" class="visually-hidden">What I film</h2>
-      <div class="kinds__list">
+      <div class="kinds__list" data-reveal>
         <article class="kind">
           <h3>Wedding films</h3>
           <p>Full day coverage with a second camera at the ceremony. A film between 5 and 9 minutes, plus a short cut for sharing the same week.</p>
@@ -144,21 +155,21 @@
     </section>
 
     <section class="process" id="process" aria-labelledby="process-title">
-      <h2 id="process-title">How a film happens</h2>
+      <h2 id="process-title" data-reveal>How a film happens</h2>
       <ol class="steps">
-        <li class="step">
+        <li class="step" data-reveal style="--i:0">
           <h3>Talk</h3>
           <p>A call about the day, the people and what has to be in the film. You get a quote and a hold on the date within 48&nbsp;hours.</p>
         </li>
-        <li class="step">
+        <li class="step" data-reveal style="--i:1">
           <h3>Shoot</h3>
           <p>I arrive early, work quietly, and leave when the story is over. Two cameras, wireless audio, drone where it is allowed.</p>
         </li>
-        <li class="step">
+        <li class="step" data-reveal style="--i:2">
           <h3>Edit and grade</h3>
           <p>Picture lock in 6 to 8&nbsp;weeks for weddings, 2&nbsp;weeks for brand work. Graded by hand, music licensed, one round of changes included.</p>
         </li>
-        <li class="step">
+        <li class="step" data-reveal style="--i:3">
           <h3>Deliver</h3>
           <p>A private link, a 4K download that is yours to keep, and the short cut ready for Instagram.</p>
         </li>
@@ -166,11 +177,11 @@
     </section>
 
     <section class="words" aria-label="What clients say">
-      <blockquote class="quote">
+      <blockquote class="quote" data-reveal style="--i:0">
         <p>We watched it the night it arrived and again on our first anniversary. It still gets us.</p>
         <footer>Ana and Mihai Pop<span>Wedding in Brașov</span></footer>
       </blockquote>
-      <blockquote class="quote">
+      <blockquote class="quote" data-reveal style="--i:1">
         <p>Roland shot our launch film in one day and had the cut back before the campaign started.</p>
         <footer>Irina Marcu<span>Marketing lead, Northline Coffee</span></footer>
       </blockquote>
@@ -180,7 +191,7 @@
     <section class="book" id="book" aria-labelledby="book-title">
       <img class="book__frame" src="assets/contact.jpg" width="1920" height="800" alt="" loading="lazy" decoding="async">
       <div class="book__inner">
-        <div class="book__intro">
+        <div class="book__intro" data-reveal>
           <p class="eyebrow">Book a date</p>
           <h2 id="book-title">Tell me about the day.</h2>
           <p>Dates go fast between May and October. Write a few lines and I will answer within two working days.</p>
@@ -191,7 +202,7 @@
             <span class="contact-line__status" id="copy-status" aria-live="polite"></span>
           </div>
         </div>
-        <form class="form" id="booking-form" novalidate>
+        <form class="form" id="booking-form" novalidate data-reveal style="--i:1">
           <div class="field">
             <label for="f-name">Your name</label>
             <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Ana Pop…">
@@ -241,6 +252,7 @@
       <a href="#book">Book a date</a>
     </nav>
     <p class="footer__note"><span translate="no">hello@rolandfrunza.com</span><br>© 2026 Roland Frunza</p>
+    <button class="footer__motion" type="button" id="motion-toggle" aria-pressed="false">Reduce motion</button>
   </footer>
 
   <script src="script.js" defer></script>

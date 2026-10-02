@@ -9,7 +9,10 @@ restrained scroll reveals (precedent family: Runway, with ElevenLabs for the dar
 ## Dials
 
 - DESIGN_VARIANCE 8: asymmetric editorial grid, left-weighted hero, mixed aspect ratios.
-- MOTION_INTENSITY 5: reveals on scroll, hover scale on frames, one marquee of client types. No GSAP.
+- MOTION_INTENSITY 8: a film-leader opening, title-card word reveals, light leak and slow drift on the
+  hero, animated grain, a scroll scrubber in the nav, shutter-wipe reveals on frames, a self-drawing
+  process timeline, ambient glow from the hovered film. Native CSS and IntersectionObserver, no GSAP.
+  Every loop stops under prefers-reduced-motion and the footer "Reduce motion" toggle.
 - VISUAL_DENSITY 3: one idea per section, large frames, lots of air.
 
 ## Precedents
@@ -55,6 +58,24 @@ Eyebrow budget: ceil(9/3) = 3. Used: hero (1), selected films (1), book a date (
 
 CTA intent map: "Book a date" is the only contact label (nav, hero, section 8). "See the films" is the
 only portfolio label (hero secondary).
+
+## Motion map (each item has one job)
+
+| Element | Motion | Why |
+|---|---|---|
+| Letterbox leader | two bars open from the centre on load | the page starts like a film |
+| Hero headline | words rise one by one from a masked line | title card |
+| Hero frame | 2.4s push-in, then a 28s drift | the still behaves like a locked-off shot |
+| Light leak | one warm sweep across the frame on load | the tungsten accent arrives as light before it appears as UI |
+| Viewfinder marks | breathe in from the corners | the hero is a frame being composed |
+| Grain | fixed overlay at 5% opacity, 8 steps per second | every frame on the page is "film" |
+| Nav scrubber | 2px accent line tracks scroll position | the page is a timeline |
+| Film frames | shutter wipe left to right, image settles from 1.12 to 1 | reveals read as cuts |
+| Film hover | play ring with pulse, image brightens, section glows with that film's colours | the frame invites play |
+| Portrait | wipes down like a slate | same family as the frames |
+| Process timeline | each tick draws in and its heading warms when in view | progress through the steps |
+| Booking frame | one 14s pan when the section arrives | the last shot moves |
+| Buttons | fill wipes left to right | consistent with the frame reveals |
 
 ## Image slots
 

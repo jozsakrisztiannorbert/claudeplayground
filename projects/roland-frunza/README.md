@@ -5,7 +5,9 @@ Static site, no build step. Open `index.html` or run `npx serve projects/roland-
 - `DESIGN.md` the design read, dials, tokens, section plan and image slots
 - `index.html`, `styles.css`, `script.js` the page
 - `assets/` placeholder stills and self-hosted fonts (Bricolage Grotesque, Geist; SIL OFL)
-- `screenshots/` desktop 1440x900 and mobile 390x844, first viewport and full page
+- `screenshots/` desktop 1440x900 and mobile 390x844, first viewport, full page, and a hovered film frame
+- Motion: see the motion map in `DESIGN.md`. The footer "Reduce motion" button and the system
+  reduced-motion setting turn every animation off; the choice is remembered in the browser.
 
 ## Research status
 
@@ -50,14 +52,16 @@ Sample content, written to look real so the layout can be judged. Replace all of
 
 Checked with playwright-cli on bundled Chromium.
 
-- No horizontal overflow at 1440 and 390 wide. No console errors. Both fonts report loaded.
+- No horizontal overflow at 1440 and 390 wide. No console errors. Both fonts report loaded. Every
+  reveal target reports visible after one scroll through the page; a 4s safety timer reveals the rest.
+- Screenshots come from `atelier/qa-shots.sh`, which serves the project and drives playwright-cli.
 - Hero fits the first viewport at both widths, headline on two lines at desktop.
 - taste-skill pre-flight: zero em-dashes, one theme, one accent, all-sharp radius, 3 eyebrows for 9
   sections, one marquee with a pause control, no equal-cards row, no scroll cue, no numbering, no
   decoration strip in the hero, one label per CTA intent ("Book a date").
 - web-design-guidelines: skip link, labels on every control, inline errors with focus on the first
   invalid field, placeholders end with an ellipsis, `aria-live` on status text, `prefers-reduced-motion`
-  honored, explicit `width`/`height` on every image, lazy loading below the fold, `theme-color` meta,
+  honored, every autoplaying loop (grain, marquee) has a pause control, explicit `width`/`height` on every image, lazy loading below the fold, `theme-color` meta,
   `color-scheme: dark`, `scroll-margin-top` under the sticky nav, `translate="no"` on the name and email.
 - Deliberate deviation: headings and buttons use sentence case, not Title Case, to match the quiet
   register set in DESIGN.md.
