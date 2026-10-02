@@ -43,5 +43,5 @@ logo or wordmark, preferred contact channel, whether a Romanian version is wante
 
 ## What the site must feel like
 
-A reel, not a brochure. Image first, chrome invisible. One clear ask: book a date. Mobile is the
+A reel, not a brochure. Image first, chrome invisible. One clear ask: book a consultation. Mobile is the
 primary viewport because the traffic will come from Instagram.

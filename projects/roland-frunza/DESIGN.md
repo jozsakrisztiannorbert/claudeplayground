@@ -57,7 +57,7 @@ Radius: all-sharp (0) on frames and buttons. Pill only on the single tag chip in
 
 ## Sections and layout families (no family repeats)
 
-1. Nav: single line, 64px, wordmark left, three links right, one CTA "Book a date".
+1. Nav: single line, 64px, wordmark left, three links right, one CTA "Book a consultation".
 2. Hero: left-weighted headline over a full-bleed showreel frame, 1 eyebrow, 1 subline, 1 CTA pair. Fits 100dvh.
 3. Selected films: editorial masonry, 5 frames in a 12-column grid with mixed 16:9 and 4:5 ratios, captions below frames.
 4. About: 2-column, portrait right, text left with a short facts list (not a spec table).
@@ -65,12 +65,12 @@ Radius: all-sharp (0) on frames and buttons. Pill only on the single tag chip in
 6. What I film: horizontal marquee of film types (the one marquee on the page), then a 2-column list of expandable services (`details`), each with what is included.
 7. How a film happens: vertical timeline of 4 real steps, verb-noun labels, no numbering.
 8. Kind words: two quotes, max 3 lines each, marked as sample in README.
-9. Book a date: full-bleed frame with a short form (name, email, date, type) that prevents default and shows an inline confirmation; email shown as text with a copy button.
+9. Book a consultation: full-bleed frame with a short form (name, email, date, type) that prevents default and shows an inline confirmation; email shown as text with a copy button.
 10. Footer: wordmark, Instagram, Facebook, email, year.
 
-Eyebrow budget: ceil(10/3) = 4. Used: hero (1), selected films (1), book a date (1).
+Eyebrow budget: ceil(10/3) = 4. Used: hero (1), selected films (1), book a consultation (1).
 
-CTA intent map: "Book a date" is the only contact label (nav, hero, section 8). "See the films" is the
+CTA intent map: "Book a consultation" is the only contact label (nav, hero, section 8). "See the films" is the
 only portfolio label (hero secondary).
 
 ## Motion map (each item has one job)

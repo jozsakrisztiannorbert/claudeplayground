@@ -81,7 +81,7 @@ Checked with playwright-cli on bundled Chromium.
   the nav underlines the current section; the ident is captured at fixed times in `screenshots/ident-*.png`.
 - taste-skill pre-flight: zero em-dashes, one theme, one accent, all-sharp radius, 3 eyebrows for 9
   sections, one marquee with a pause control, no equal-cards row, no scroll cue, no numbering, no
-  decoration strip in the hero, one label per CTA intent ("Book a date").
+  decoration strip in the hero, one label per CTA intent ("Book a consultation").
 - web-design-guidelines: skip link, labels on every control, inline errors with focus on the first
   invalid field, placeholders end with an ellipsis, `aria-live` on status text, `prefers-reduced-motion`
   honored, every autoplaying loop (grain, marquee) has a pause control, explicit `width`/`height` on every image, lazy loading below the fold, `theme-color` meta,

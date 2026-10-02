@@ -31,11 +31,11 @@ Film grain over everything, letterbox bars at the top and tail.
 | # | Time | Scene | What moves | Text on screen | Sound |
 |---|---|---|---|---|---|
 | 1 | 0.0 to 3.6 | Hook: ident | Leaf draws stem to tip and back (0.3 to 1.8), midrib (1.5 to 2.1), wordmark settles (1.6), "videography" tracks in (2.0). Dip to black at 3.3. | roland frunza, videography | pad enters at 0; soft bell at 1.9 when the stroke closes |
-| 2 | 3.6 to 8.0 | Reveal: title card | Hero frame pushes in from 1.12, light leak sweeps, viewfinder marks breathe in, headline words rise one by one, buttons land. | Films that still feel like the day. Book a date, Play showreel | pad swells, low note at 3.6 |
+| 2 | 3.6 to 8.0 | Reveal: title card | Hero frame pushes in from 1.12, light leak sweeps, viewfinder marks breathe in, headline words rise one by one, buttons land. | Films that still feel like the day. Book a consultation, Play showreel | pad swells, low note at 3.6 |
 | 3 | 8.0 to 12.0 | Highlight: the reel | Five frames shutter-wipe in, staggered. A cursor glides to the first frame: play ring pulses, section glows with the film's colours, caption turns gold. | Five films from the last two seasons. | soft click at 10.4 |
 | 4 | 12.0 to 15.6 | Highlight: the grade | Comparison frame; the handle sweeps from 12% to 78% revealing the graded side, then rests. | Every frame is graded by hand. Camera original, Graded | pad chord change at 12.0 |
-| 5 | 15.6 to 18.4 | Highlight: book a date | Form card rises; name types in, button fills, confirmation line appears. | Tell me about the day. Request sent. | typing taps (soft), chime at 17.6 |
-| 6 | 18.4 to 21.0 | Outro: lockup | Dip to black, leaf and wordmark fade up with the handle and the ask. | roland frunza, videography, @rolandfrunza, Book a date | pad resolves and fades |
+| 5 | 15.6 to 18.4 | Highlight: book a consultation | Form card rises; name types in, button fills, confirmation line appears. | Tell me about the day. Request sent. | typing taps (soft), chime at 17.6 |
+| 6 | 18.4 to 21.0 | Outro: lockup | Dip to black, leaf and wordmark fade up with the handle and the ask. | roland frunza, videography, @rolandfrunza, Book a consultation | pad resolves and fades |
 
 Readability: every headline holds at least 1.6 s fully settled; the hero headline holds 3.2 s.
 Transitions: dips through the page ground, never crossfades between two busy layouts.

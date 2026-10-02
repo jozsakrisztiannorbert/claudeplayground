@@ -123,9 +123,9 @@ button { touch-action: manipulation; }
 .btn--primary:hover { border-color: var(--fg); color: var(--bg); }
 .btn--ghost { border-color: rgba(233, 230, 223, 0.45); backdrop-filter: blur(6px); background-color: rgba(12, 14, 17, 0.35); }
 .btn--ghost:hover { border-color: var(--fg); color: var(--bg); }
-.btn--play { padding-left: 10px; }
+.btn--play { padding: 8px 22px 8px 9px; }
 .btn__ring {
-  display: inline-grid; place-items: center; width: 30px; height: 30px;
+  display: inline-grid; place-items: center; width: 27px; height: 27px;
   border: 1px solid currentColor; border-radius: 50%;
   transition: transform 320ms var(--ease-cine), background-color 200ms var(--ease-out);
 }
@@ -466,7 +466,7 @@ h2 { font-size: var(--step-4); max-width: 18ch; }
 .quote footer { display: grid; font-size: var(--step--1); color: var(--fg-2); }
 .quote footer span { color: var(--fg-3); }
 
-/* Book a date */
+/* Book a consultation */
 .book { position: relative; isolation: isolate; overflow: hidden; border-top: 1px solid var(--line); }
 .book__frame { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); }
 .js .book.in .book__frame { animation: pan 14s var(--ease-cine) both; }
